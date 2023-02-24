@@ -1,0 +1,21 @@
+server:
+  port: 1234
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: auth_server
+          uri: http://localhost:6789
+          predicates:
+            - Path=/auth/**
+        - id: ev_data_service
+          uri: http://localhost:6790
+          predicates:
+            - Path=/ev-data/**
