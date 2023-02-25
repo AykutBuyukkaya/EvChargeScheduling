@@ -1,6 +1,5 @@
 package com.buyukkaya.evdataservice.domain.model.dto;
 
-import com.buyukkaya.evdataservice.domain.model.entity.VehicleType;
 import com.mongodb.BasicDBObject;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +18,7 @@ public class EvDto {
 
     private BrandDto brand;
 
-    private VehicleType vehicleType;
+    private String vehicleType;
 
     private String model;
 
