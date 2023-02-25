@@ -17,7 +17,7 @@ eureka:
 
 keycloak:
   client_id: evcsa
-  client_secret: FSvY3TYoK1wmJEBknoq8KrfdTXiGT1dP  #DO NOT PUT THIS ON PROD! GIVE IT VIA ENV OR READ FROM CONFIG SERVER
+  client_secret: yUAIJMBP5ZeykbypTXinudvAhwszmovd  #DO NOT PUT THIS ON PROD! GIVE IT VIA ENV OR READ FROM CONFIG SERVER
   grant_type_password: password
   grant_type_refresh_token: refresh_token
   admin_login_url: "http://localhost:8890/realms/master/protocol/openid-connect/token"

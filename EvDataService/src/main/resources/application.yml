@@ -20,7 +20,7 @@ spring:
       uri: mongodb://localhost:27017
   jackson:
     serialization:
-      order-map-entries-by-keys: true
+      order-map-entries-by-keys: false
       write-dates-as-timestamps: false
     default-property-inclusion: non_null
   autoconfigure:
