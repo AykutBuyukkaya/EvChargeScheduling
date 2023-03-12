@@ -1,10 +1,11 @@
 package com.buyukkaya.evdataservice.domain.model.entity;
 
+import jakarta.persistence.Id;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import javax.persistence.Id;
+
 import java.io.Serializable;
 
 

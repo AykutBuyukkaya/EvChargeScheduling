@@ -1,6 +1,7 @@
 server:
   port: 6789
 
+
 spring:
   jackson:
     serialization:
@@ -8,12 +9,22 @@ spring:
       write-dates-as-timestamps: false
     default-property-inclusion: non_null
   application:
-    name: auth-service
+    name: AUTH-SERVICE
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8083/eureka
+  rabbitmq:
+    username: rabbitmq
+    password: 123456
+    ssl:
+      enabled: false
+    listener:
+      simple:
+        default-requeue-rejected: false
+      direct:
+        retry:
+          enabled: true
+        acknowledge-mode: auto
+    host: localhost
+    port: 5672
 
 keycloak:
   client_id: evcsa
@@ -23,4 +34,14 @@ keycloak:
   admin_login_url: "http://localhost:8890/realms/master/protocol/openid-connect/token"
   register_url: http://localhost:8890/admin/realms/master/users
   login_url: http://localhost:8890/realms/master/protocol/openid-connect/token
+
+rabbitconfig:
+  user_registration_queue: user-registration
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8152/eureka
+    instance:
+      preferIpAddress: true
 

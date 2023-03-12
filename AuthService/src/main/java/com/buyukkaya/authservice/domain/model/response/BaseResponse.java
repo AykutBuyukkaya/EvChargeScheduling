@@ -14,7 +14,6 @@ import java.time.Instant;
 public abstract class BaseResponse {
 
     private Instant timestamp;
-
     private String message;
     private String errorMessage;
 

@@ -1,14 +1,26 @@
 package com.buyukkaya.authservice.domain.model.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+import java.io.Serializable;
+import java.util.UUID;
+
+
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterResponse extends BaseResponse {
+@Getter
+@Setter
+@ToString
+public class RegisterResponse extends BaseResponse implements Serializable {
 
-    private String errorMessage;
+    private UUID id;
+    private String username;
+
+    private String email;
+
+    private String firstName;
+
+    private String lastName;
+
 
 }

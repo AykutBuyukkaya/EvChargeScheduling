@@ -16,7 +16,7 @@ public class EvDto {
 
     private UUID id;
 
-    private BrandDto brand;
+    private String brand;
 
     private String vehicleType;
 

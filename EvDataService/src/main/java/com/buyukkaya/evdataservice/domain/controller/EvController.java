@@ -30,8 +30,8 @@ public class EvController {
                 .build());
     }
 
-    @GetMapping
-    public ResponseEntity<GetEvResponse> getEvResponseById(@RequestParam String id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<GetEvResponse> getEvResponseById(@PathVariable String id) {
         return ResponseEntity.ok(GetEvResponse.builder()
                 .ev(evService.findById(id))
                 .timestamp(Instant.now())

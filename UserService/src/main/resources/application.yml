@@ -1,0 +1,57 @@
+server:
+  port: 6791
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8152/eureka
+    instance:
+      preferIpAddress: true
+
+keycloak:
+  realm: master
+  auth-server-url: http://localhost:8890
+  ssl-required: external
+  bearer-only: true
+  public-client: true
+  resource: evcsa
+
+spring:
+  application:
+    name: USER-SERVICE
+
+  rabbitmq:
+    username: rabbitmq
+    password: 123456
+    ssl:
+      enabled: false
+    listener:
+      simple:
+        default-requeue-rejected: false
+      direct:
+        retry:
+          enabled: true
+        acknowledge-mode: auto
+    host: localhost
+    port: 5672
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/user_service
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+
+  jackson:
+    serialization:
+      order-map-entries-by-keys: false
+      write-dates-as-timestamps: false
+    default-property-inclusion: non_null
+
+rabbitconfig:
+  user_registration_queue: user-registration
+

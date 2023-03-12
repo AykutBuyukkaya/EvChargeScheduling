@@ -1,0 +1,34 @@
+server:
+  servlet:
+    context-path: /charging-station
+  port: 6792
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8152/eureka
+    instance:
+      preferIpAddress: true
+
+keycloak:
+  realm: master
+  auth-server-url: http://localhost:8890
+  ssl-required: external
+  bearer-only: true
+  public-client: true
+  resource: evcsa
+
+spring:
+  application:
+    name: CHARGING-STATION-SERVICE
+  data:
+    mongodb:
+      database: chargingstation
+      uri: mongodb://localhost:27017
+  jackson:
+    serialization:
+      order-map-entries-by-keys: false
+      write-dates-as-timestamps: false
+    default-property-inclusion: non_null
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration

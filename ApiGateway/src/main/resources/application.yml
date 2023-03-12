@@ -1,21 +1,58 @@
 server:
   port: 1234
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8152/eureka
+    instance:
+      preferIpAddress: true
 
 spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            provider: keycloak
+            client-id: evcsa
+            client-secret: 'yUAIJMBP5ZeykbypTXinudvAhwszmovd'
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8890/login/oauth2/code/keycloak
+            scope: openid
+        provider:
+          keycloak:
+            authorization-uri: http://localhost:8890/realms/master/protocol/openid-connect/auth
+            token-uri: http://localhost:8890/realms/master/protocol/openid-connect/token
+            user-info-uri: http://localhost:8890/realms/master/protocol/openid-connect/userinfo
+            jwk-set-uri: http://localhost:8890/realms/master/protocol/openid-connect/certs
+            user-name-attribute: name
+            user-info-authentication-method: header
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8890/realms/master/protocol/openid-connect/certs
+  keycloak-client:
+    server-url: http://localhost:8890/auth
+    realm: master
+
   cloud:
     gateway:
       routes:
         - id: auth_server
-          uri: http://localhost:6789
+          uri: lb://AUTH-SEcharginRVICE
           predicates:
             - Path=/auth/**
         - id: ev_data_service
-          uri: http://localhost:6790
+          uri: lb://EV-DATA-SERVICE
           predicates:
             - Path=/ev-data/**
+        - id: user_service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/**
+        - id: charging_station_service
+          uri: lb://CHARGING-STATION-SERVICE
+          predicates:
+            - Path=/charging-station/**
+  application:
+    name: API-GATEWAY

@@ -3,13 +3,12 @@ server:
     context-path: /ev-data
   port: 6790
 
-keycloak:
-  realm: master
-  auth-server-url: http://localhost:8890
-  ssl-required: external
-  bearer-only: true
-  public-client: true
-  resource: evcsa
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8152/eureka
+    instance:
+      preferIpAddress: true
 
 spring:
   application:

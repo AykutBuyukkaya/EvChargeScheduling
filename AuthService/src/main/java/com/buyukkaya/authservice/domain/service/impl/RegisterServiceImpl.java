@@ -6,6 +6,7 @@ import com.buyukkaya.authservice.domain.model.request.KeycloakRegisterRequest;
 import com.buyukkaya.authservice.domain.model.request.RegisterRequest;
 import com.buyukkaya.authservice.domain.model.response.RegisterResponse;
 import com.buyukkaya.authservice.domain.service.LoginService;
+import com.buyukkaya.authservice.domain.service.RabbitService;
 import com.buyukkaya.authservice.domain.service.RegisterService;
 import com.buyukkaya.authservice.domain.util.CommonUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +15,6 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.time.Instant;
 import java.util.Objects;
 
 @Service
@@ -29,11 +29,14 @@ public class RegisterServiceImpl implements RegisterService {
     private final RestTemplate restTemplate;
     private final CommonUtil commonUtil;
 
-    public RegisterServiceImpl(LoginService loginService, RegisterMapper registerMapper, RestTemplate restTemplate, CommonUtil commonUtil) {
+    private final RabbitService rabbitService;
+
+    public RegisterServiceImpl(LoginService loginService, RegisterMapper registerMapper, RestTemplate restTemplate, CommonUtil commonUtil, RabbitService rabbitService) {
         this.loginService = loginService;
         this.registerMapper = registerMapper;
         this.restTemplate = restTemplate;
         this.commonUtil = commonUtil;
+        this.rabbitService = rabbitService;
     }
 
     @Override
@@ -52,9 +55,10 @@ public class RegisterServiceImpl implements RegisterService {
                     .requireNonNull(restTemplate.exchange(registrationUrl, HttpMethod.POST, registerRequestHttpEntity, RegisterResponse.class));
 
             if (registerResponseEntity.getStatusCode().is2xxSuccessful()) {
-                RegisterResponse registerResponse = new RegisterResponse();
-                registerResponse.setTimestamp(Instant.now());
+                RegisterResponse registerResponse = registerMapper.toRegisterResponse(request);
                 registerResponse.setMessage("User registration successful!");
+                registerResponse.setId(commonUtil.getUUIDFromKeycloakResponse(registerResponseEntity));
+                rabbitService.sendRegistrationToUserService(registerResponse);
                 return registerResponse;
             } else {
                 throw new LoginServiceException(Objects.requireNonNull(registerResponseEntity.getBody()).getErrorMessage());

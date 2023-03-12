@@ -4,10 +4,12 @@ import com.buyukkaya.evdataservice.domain.mapper.BrandMapper;
 import com.buyukkaya.evdataservice.domain.model.dto.BrandDto;
 import com.buyukkaya.evdataservice.domain.repository.BrandRepository;
 import com.buyukkaya.evdataservice.domain.service.BrandService;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Primary
 @Service
 public class BrandServiceImpl implements BrandService {
 
