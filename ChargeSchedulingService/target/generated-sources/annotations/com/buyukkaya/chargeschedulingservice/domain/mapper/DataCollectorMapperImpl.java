@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-03-11T12:40:24+0300",
+    date = "2023-03-15T23:01:24+0300",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.6 (Amazon.com Inc.)"
 )
 @Component
@@ -29,8 +29,6 @@ public class DataCollectorMapperImpl implements DataCollectorMapper {
         dataCollectorResponse.chargingStationId( chargeSchedulingRequest.getChargingStationId() );
         dataCollectorResponse.arrivalTime( chargeSchedulingRequest.getArrivalTime() );
         dataCollectorResponse.departureTime( chargeSchedulingRequest.getDepartureTime() );
-        dataCollectorResponse.currentSoC( chargeSchedulingRequest.getCurrentSoC() );
-        dataCollectorResponse.expectedSoC( chargeSchedulingRequest.getExpectedSoC() );
 
         return dataCollectorResponse.build();
     }

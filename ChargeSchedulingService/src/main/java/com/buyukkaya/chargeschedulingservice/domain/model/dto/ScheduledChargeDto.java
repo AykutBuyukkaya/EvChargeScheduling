@@ -1,26 +1,18 @@
-package com.buyukkaya.chargeschedulingservice.domain.model.entity;
+package com.buyukkaya.chargeschedulingservice.domain.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Getter
 @Setter
-public class ScheduledCharge {
+@Builder
+public class ScheduledChargeDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     private UUID evId;
@@ -29,8 +21,10 @@ public class ScheduledCharge {
 
     private String chargingStationId;
 
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm", timezone = "UTC")
     private LocalDateTime arrivalTime;
 
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm", timezone = "UTC")
     private LocalDateTime departureTime;
 
     private Double currentSoC;
@@ -41,11 +35,12 @@ public class ScheduledCharge {
 
     private Long requiredTimeToChargeInMinutes;
 
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm", timezone = "UTC")
     private LocalDateTime chargeStartTime;
 
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm", timezone = "UTC")
     private LocalDateTime chargeEndTime;
 
     private Double chargingCost;
-
 
 }

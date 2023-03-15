@@ -57,6 +57,6 @@ public class ElectricityPricingDataCollectorService extends DataCollectorService
 
     @Override
     protected String generateServiceRequestUrl(DataCollectorResponse dataCollectorResponse) {
-        return this.serviceUrl.concat("/between-dates");
+        return this.serviceUrl.concat("/between-dates/one-minute-data");
     }
 }
