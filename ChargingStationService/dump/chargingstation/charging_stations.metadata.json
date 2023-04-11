@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"80b971b7b8264892b6a469b2bee36ca4","collectionName":"charging_stations","type":"collection"}

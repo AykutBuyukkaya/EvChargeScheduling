@@ -1,0 +1,42 @@
+server:
+  servlet:
+    context-path: /charge-scheduling
+  port: 6793
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8152/eureka
+    instance:
+      preferIpAddress: true
+
+spring:
+  application:
+    name: CHARGE-SCHEDULING-SERVICE
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/charge_scheduling_service
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database: postgresql
+
+  jackson:
+    serialization:
+      order-map-entries-by-keys: false
+      write-dates-as-timestamps: false
+    default-property-inclusion: non_null
+
+update:
+  charging-station-occupation: http://localhost:6792/charging-station/update/occupation-status
+
+data-collector-config:
+  ev-data-service: http://localhost:6790/ev-data
+  charging-station-service: http://localhost:6792/charging-station
+  electricity-pricing-service: http://localhost:6791/electricity-pricing
+

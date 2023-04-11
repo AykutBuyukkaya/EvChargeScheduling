@@ -1,0 +1,25 @@
+server:
+  servlet:
+    context-path: /electricity-pricing
+  port: 6791
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8152/eureka
+    instance:
+      preferIpAddress: true
+
+spring:
+  application:
+    name: ELECTRICITY-PRICING-SERVER
+
+  jackson:
+    serialization:
+      order-map-entries-by-keys: false
+      write-dates-as-timestamps: false
+    default-property-inclusion: non_null
+
+
+comed:
+  url: https://hourlypricing.comed.com/api?type=5minutefeed&datestart=%s&dateend=%s

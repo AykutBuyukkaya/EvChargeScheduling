@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ApiGateway/ApiGateway.iml" filepath="$PROJECT_DIR$/ApiGateway/ApiGateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ChargeSchedulingService/ChargeSchedulingService.iml" filepath="$PROJECT_DIR$/ChargeSchedulingService/ChargeSchedulingService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ChargingStationService/ChargingStationService.iml" filepath="$PROJECT_DIR$/ChargingStationService/ChargingStationService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/EVCSA-NEW.iml" filepath="$PROJECT_DIR$/.idea/EVCSA-NEW.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ElectricityPricingService/ElectricityPricingService.iml" filepath="$PROJECT_DIR$/ElectricityPricingService/ElectricityPricingService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EurekaService/EurekaService.iml" filepath="$PROJECT_DIR$/EurekaService/EurekaService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EvDataService/EvDataService.iml" filepath="$PROJECT_DIR$/EvDataService/EvDataService.iml" />
+    </modules>
+  </component>
+</project>

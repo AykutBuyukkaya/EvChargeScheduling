@@ -1,0 +1,26 @@
+server:
+  servlet:
+    context-path: /ev-data
+  port: 6790
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8152/eureka
+    instance:
+      preferIpAddress: true
+
+spring:
+  application:
+    name: EV-DATA-SERVICE
+  data:
+    mongodb:
+      database: evdata
+      uri: mongodb://localhost:27017
+  jackson:
+    serialization:
+      order-map-entries-by-keys: false
+      write-dates-as-timestamps: false
+    default-property-inclusion: non_null
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration

@@ -1,0 +1,15 @@
+
+
+java:S1450"kRemove the "scheduledChargePriorityQueue" field and declare it as a local variable in the relevant methods.(ğÕÂï
+^
+java:S1854&"IRemove this useless assignment to local variable "dataCollectorResponse".(„Şë
+Y
+java:S1854%"CRemove this useless assignment to local variable "scheduledCharge".(·Óış
+J
+java:S1481%"4Remove this unused "scheduledCharge" local variable.(·Óış
+O
+java:S1481&":Remove this unused "dataCollectorResponse" local variable.(„Şë
+A
+java:S1168/"+Return an empty collection instead of null.(¥¹ï
+V
+java:S1068"@Remove this unused "scheduledChargePriorityQueue" private field.(ğÕÂï

@@ -1,0 +1,38 @@
+server:
+  port: 1234
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8152/eureka
+    instance:
+      preferIpAddress: true
+
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins: "*"
+            allowed-methods: "*"
+            allowed-headers: "*"
+      routes:
+        - id: ev_data_service
+          uri: lb://EV-DATA-SERVICE
+          predicates:
+            - Path=/ev-data/**
+        - id: user_service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/**
+        - id: charging_station_service
+          uri: lb://CHARGING-STATION-SERVICE
+          predicates:
+            - Path=/charging-station/**
+        - id: charge_scheduling_service
+          uri: lb://CHARGE-SCHEDULING-SERVICE
+          predicates:
+            - Path=/charge-scheduling/**
+  application:
+    name: API-GATEWAY

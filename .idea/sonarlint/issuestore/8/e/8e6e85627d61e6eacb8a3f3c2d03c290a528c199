@@ -1,0 +1,14 @@
+
+p
+java:S18543"NRemove this useless assignment to local variable "chargingStationPowerOutput".(Ì÷”¸úÿÿÿÿ8Æ·¯ö0
+h
+java:S18542"FRemove this useless assignment to local variable "evChargingPowerMap".(—òœúÿÿÿÿ8Ç·¯ö0
+Y
+java:S14812"7Remove this unused "evChargingPowerMap" local variable.(—òœúÿÿÿÿ8Ë·¯ö0
+a
+java:S14813"?Remove this unused "chargingStationPowerOutput" local variable.(Ì÷”¸úÿÿÿÿ8Í·¯ö0
+]	java:S1255"<This block of commented-out lines of code should be removed.(úëåˆşÿÿÿÿ8Í·¯ö0
+H
+java:S11354"2Complete the task associated to this TODO comment.(ÁÅÂƒ
+
+java:S1128"pRemove this unused import 'com.buyukkaya.chargeschedulingservice.domain.exception.ChargingNotSuitableException'.(á•Ñ†8Ğ·¯ö0
